@@ -38,4 +38,5 @@ to do list:
 8.high concurrency request queue
 
 **[Netty IO framework](https://www.cnblogs.com/Jeremy2001/p/6066173.html)**
+**[Netty in action](https://www.w3cschool.cn/essential_netty_in_action/)**
 
