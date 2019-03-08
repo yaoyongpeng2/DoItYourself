@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -17,11 +18,11 @@ public class TcpClient {
 		try {
 			socket = new Socket(host, port);
 			System.out.println("client>"+msg);
-			BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-			bw.write(msg);
-			bw.newLine();//!important,because redis server side needs it,otherwise youwill wait long time
-			bw.flush();
-			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			OutputStream os=socket.getOutputStream();
+			os.write(msg.getBytes("utf-8"));
+			os.write('\n');//!important,because server side calls readline(),which blocks untill a new line read
+			os.flush();
+//			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //			String readMsg=br.readLine();//bug here.return message may be multi lines
 			byte[] b=new byte[1024];
 			int read=socket.getInputStream().read(b);
