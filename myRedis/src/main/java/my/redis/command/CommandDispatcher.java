@@ -19,7 +19,7 @@ public class CommandDispatcher {
 		ICommand cmd=null;
 		Matcher m=p.matcher(commandLine);
 		if(m.matches()) {//cmd an key is mandatory
-			cmdName=m.group(1);
+			cmdName=m.group(1).toLowerCase();//redis commands seare case insensitive?
 			key=m.group(2);
 			value=m.group(3).trim();
 		}else {//blank cmdName is checked and excluded
