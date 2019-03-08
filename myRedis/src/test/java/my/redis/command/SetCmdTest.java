@@ -1,6 +1,6 @@
 package my.redis.command;
 
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,14 +12,14 @@ public class SetCmdTest {
 		final String value="my first value";
 		SetCmd setCmd=new SetCmd();
 		try {
-			setCmd.exec(key, value);
+			setCmd.exec(key+" "+value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		GetCmd getCmd=new GetCmd();
 		String gotValue=null;
 		try {
-			gotValue = getCmd.exec(key, null);
+			gotValue = getCmd.exec(key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,13 +31,14 @@ public class SetCmdTest {
 		final String value="my first value";
 		SetCmd setCmd=new SetCmd();
 		try {
-			setCmd.exec(null, value);	//lack key
+			setCmd.exec(null);	//lack key
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
 			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-			fail(e.getMessage());
+//			fail(e.getMessage());
+			assert(false);
 		}
 	}
 	
@@ -46,13 +47,14 @@ public class SetCmdTest {
 		final String key="myFirstkey";
 		SetCmd setCmd=new SetCmd();
 		try {
-			setCmd.exec(key, null);	//lack value
+			setCmd.exec(key);	//lack value
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
 			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-			fail(e.getMessage());
+//			fail(e.getMessage());
+			assert(false);
 		}
 	}
 	

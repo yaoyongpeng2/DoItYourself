@@ -6,7 +6,7 @@ public interface ICommand {
 	}
 	static final String WrongNumberArgsErrorFormat="(error) "+ICommand.Result.Error.name()+" wrong number of arguments for\'%s\' command";
 
-	public String exec(String key,String value);
-//	public String syntaxCheck(String key,String value) throws IllegalArgumentException;
+	public String exec(String args);
+	public String[] syntaxParse(String argstr) throws IllegalArgumentException;
 
 }

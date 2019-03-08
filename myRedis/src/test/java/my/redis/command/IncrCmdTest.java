@@ -1,6 +1,6 @@
 package my.redis.command;
 
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,21 +12,21 @@ class IncrCmdTest {
 		final String value="1";
 		SetCmd setCmd=new SetCmd();
 		try {
-			setCmd.exec(key, value);
+			setCmd.exec(key+" "+value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		IncrCmd cmd=new IncrCmd();
 		String gotValue=null;
 		try {
-			gotValue = cmd.exec(key, null);
+			gotValue = cmd.exec(key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		assert(gotValue.equals("(integer) 2"));
 		GetCmd getCmd=new GetCmd();
-		gotValue=getCmd.exec(key, null);
+		gotValue=getCmd.exec(key);
 		assert(gotValue.equals("2"));
 
 	}
@@ -37,14 +37,14 @@ class IncrCmdTest {
 		IncrCmd cmd=new IncrCmd();
 		String gotValue=null;
 		try {
-			gotValue = cmd.exec(key, null);
+			gotValue = cmd.exec(key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		assert(gotValue.equals("1"));
 		GetCmd getCmd=new GetCmd();
-		gotValue=getCmd.exec(key, null);
+		gotValue=getCmd.exec(key);
 		assert(gotValue.equals("1"));
 
 	}
@@ -54,13 +54,15 @@ class IncrCmdTest {
 		final String value="my first value";
 		IncrCmd cmd=new IncrCmd();
 		try {
-			cmd.exec(null, value);	//lack key
+			cmd.exec(null);	//lack key
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
 			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-			fail(e.getMessage());
+//			fail(e.getMessage());
+			assert(false);
+
 		}
 	}
 	

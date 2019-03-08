@@ -1,6 +1,6 @@
 package my.redis.command;
 
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +12,13 @@ class GetCmdTest {
 		final String value="my first value";
 		SetCmd setCmd=new SetCmd();
 		try {
-			setCmd.exec(key, value);
+			setCmd.exec(key+" "+value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		GetCmd getCmd=new GetCmd();
 		String gotValue=null;
-		gotValue = getCmd.exec(key, null);
+		gotValue = getCmd.exec(key);
 		assert(gotValue.equals(value));
 	}
 	
@@ -28,13 +28,15 @@ class GetCmdTest {
 		final String value="my first value";
 		GetCmd getCmd=new GetCmd();
 		try {
-			getCmd.exec(key, value);	////extra argue here,throw IllegalArgumentException
+			getCmd.exec(key+" "+value);	////extra argue here,throw IllegalArgumentException
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
 			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-			fail(e.getMessage());
+//			fail(e.getMessage());
+			assert(false);
+
 		}
 	}
 	@Test
@@ -42,13 +44,15 @@ class GetCmdTest {
 		final String value="my first value";
 		GetCmd getCmd=new GetCmd();
 		try {
-			getCmd.exec(null, value);	////extra argue here,throw IllegalArgumentException
+			getCmd.exec(value);	////extra argue here,throw IllegalArgumentException
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
 			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-			fail(e.getMessage());
+//			fail(e.getMessage());
+			assert(false);
+
 		}
 
 	}

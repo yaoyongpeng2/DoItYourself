@@ -19,10 +19,13 @@ public class TcpClient {
 			System.out.println("client>"+msg);
 			BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			bw.write(msg);
-//			bw.newLine();//!important,because server side calls readline(),which blocks untill a new line read
+			bw.newLine();//!important,because redis server side needs it,otherwise youwill wait long time
 			bw.flush();
 			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			returnMsg=br.readLine();
+//			String readMsg=br.readLine();//bug here.return message may be multi lines
+			byte[] b=new byte[1024];
+			int read=socket.getInputStream().read(b);
+			returnMsg=new String(b,0,read);
 			System.out.println("client<"+returnMsg);
 			socket.close();
 		} catch (UnknownHostException e) {
