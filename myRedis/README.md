@@ -1,4 +1,5 @@
 # myRedis
+**[超详细Redis数据库入门教程](https://www.cnblogs.com/joeblackzqq/p/6229387.html0)**
 
 a redis written in java, to demo some java features,like:
 ====
