@@ -2,4 +2,4 @@
 
 learn by doing it yourself.  I `reinvent wheels` here to practise java tech
 
-the first wheel to reinvent is  **[my redis](./myRedis)**
+the first wheel being reinvented is  **[my redis server](./myRedis)**
