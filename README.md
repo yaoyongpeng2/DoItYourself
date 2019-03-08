@@ -3,6 +3,7 @@
 ===========================
 
 learn by doing it yourself.  I `reinvent wheels` here to practise java tech.
+
 existing wheel has known requirements and concerns.
 
 the first wheel being reinvented is  **[my redis server](./myRedis)**
