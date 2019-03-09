@@ -6,14 +6,17 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class TcpClient {
-	
+	private final Logger logger =LoggerFactory.getLogger(this.getClass());
 	public String start(String host,int port,String msg) {
 		Socket socket=null;
 		String returnMsg=null;
 		try {
 			socket = new Socket(host, port);
-			System.out.println("client>"+msg);
+			logger.info("client>{}",msg);
 			OutputStream os=socket.getOutputStream();
 			os.write(msg.getBytes("utf-8"));
 			os.write('\n');//!important,because server side calls readline(),which blocks untill a new line read
@@ -23,7 +26,7 @@ public class TcpClient {
 			byte[] b=new byte[1024];
 			int read=socket.getInputStream().read(b);
 			returnMsg=new String(b,0,read);
-			System.out.println("client<"+returnMsg);
+			logger.info("client<{}",returnMsg);
 			socket.close();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
