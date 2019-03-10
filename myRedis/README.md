@@ -18,12 +18,12 @@ function list:
 
 1. simple redis commands: set/get/incr
 
-2. framework using `asynchronous` `non-blocking` `socket` to recieve and return result.
+2. framework using `asynchronous` `non-blocking` `socket channel` to recieve commands and return result.
 
 to do list:
 ===
 
-1. can be coonected by redis-client
+1. can be connected by redis-client
 
 2. can be a redis slave,such as: ping and sync between master and slave
 
