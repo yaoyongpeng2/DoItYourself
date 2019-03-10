@@ -97,7 +97,8 @@ public class SocketController {
         try {  
             Thread.sleep(Integer.MAX_VALUE);  //can be Future.cancel(true) to intrrupt, throws an InterruptedException
         } catch (InterruptedException e) { 
-        	System.out.println(e.getMessage());
+//        	System.out.println(e.getMessage());
+        	logger.info("",e.getMessage());
 //            e.printStackTrace();  
         }  
     }  

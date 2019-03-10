@@ -3,8 +3,11 @@ package my.redis.command;
 //import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class GetCmdTest {
+	private final Logger logger =LoggerFactory.getLogger(GetCmdTest.class);
 
 	@Test
 	public void testExec() {
@@ -31,7 +34,7 @@ class GetCmdTest {
 			getCmd.exec(key+" "+value);	////extra argue here,throw IllegalArgumentException
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
-			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
+			logger.info("IllegalArgumentException caught. it's expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
 //			fail(e.getMessage());
@@ -39,6 +42,7 @@ class GetCmdTest {
 
 		}
 	}
+	
 	@Test
 	public void testExecSyntax2() {
 		final String value="my first value";
@@ -47,7 +51,7 @@ class GetCmdTest {
 			getCmd.exec(value);	////extra argue here,throw IllegalArgumentException
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
-			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
+			logger.info("IllegalArgumentException caught. it's expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
 //			fail(e.getMessage());

@@ -1,10 +1,13 @@
 package my.redis.command;
 
-//import static org.junit.Assert.fail;
+import static org.junit.Assert.fail;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class IncrCmdTest {
+	private final Logger logger =LoggerFactory.getLogger(IncrCmdTest.class);
 
 	@Test
 	public void testKeyHasNumValue() {
@@ -57,11 +60,11 @@ class IncrCmdTest {
 			cmd.exec(null);	//lack key
 		}catch(IllegalArgumentException iae) {
 			//do nothing,expected
-			System.out.println("IllegalArgumentException  caught as expected, just ignore it");
+			logger.info("IllegalArgumentException caught. it's expected, just ignore it");
 		}catch(Exception e) {
 //			e.printStackTrace();
-//			fail(e.getMessage());
-			assert(false);
+			fail(e.getMessage());
+//			assert(false);
 
 		}
 	}

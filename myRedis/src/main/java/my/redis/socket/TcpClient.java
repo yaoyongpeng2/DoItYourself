@@ -29,15 +29,18 @@ public class TcpClient {
 			logger.info("client<{}",returnMsg);
 			socket.close();
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			logger.error("",e);
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			logger.error("",e);
 		}finally {
 			if(socket!=null)
 				try {
 					socket.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+//					e.printStackTrace();
+					logger.error("",e);
 				}
 		}
 		return returnMsg;

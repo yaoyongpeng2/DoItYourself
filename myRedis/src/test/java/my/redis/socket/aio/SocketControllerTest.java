@@ -28,8 +28,9 @@ class SocketControllerTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		service.shutdown();
-		service.awaitTermination(10, TimeUnit.SECONDS);
+		service.shutdown();//notify first
+		service.awaitTermination(10, TimeUnit.SECONDS);//wait to terminate,return immediately if all threads in pool alreadly terminate
+		service.shutdownNow();//force to shutdown
 	}
 
 	@BeforeEach
