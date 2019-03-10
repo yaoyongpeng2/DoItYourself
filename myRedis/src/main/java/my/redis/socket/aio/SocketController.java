@@ -27,6 +27,7 @@ public class SocketController {
   
     public void init(String host, int port) throws IOException {  
         //ChannelGroup used to manage shared resources
+    	//use two groups?one for connection, one for read/write?
         AsynchronousChannelGroup group = AsynchronousChannelGroup.withCachedThreadPool(Executors.newCachedThreadPool(), 10);  
         final AsynchronousServerSocketChannel channel = AsynchronousServerSocketChannel.open(group);  
         //set socket option  

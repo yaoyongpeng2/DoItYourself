@@ -1,5 +1,7 @@
  **[超详细Redis数据库入门教程](https://www.cnblogs.com/joeblackzqq/p/6229387.html0)**&nbsp;|&nbsp;
- **[《Redis 教程》](http://www.runoob.com/redis/redis-tutorial.html)**
+ **[《Redis 教程》](http://www.runoob.com/redis/redis-tutorial.html)**&nbsp;|&nbsp;
+ 
+ **[Redis架构](http://www.elecfans.com/d/616135.html)**&nbsp;|&nbsp;
  
 # myRedis  
 
