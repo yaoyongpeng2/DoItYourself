@@ -49,14 +49,9 @@ public class TcpClient {
 		message.append(" ");
 		for(int i=2;i<args.length;i++)
 			message.append(" "+args[i]);
-		new Thread(new Runnable() {
-
-			public void run() {
-//				new TcpClient().start("localhost", TcpServer.PORT, "Hello TCP socket!");
+		new Thread(()->	{
 				new TcpClient().start(host, port, message.toString());
-				
-			}
-			
-		}).start();
+		}
+		).start();
 	}
 }

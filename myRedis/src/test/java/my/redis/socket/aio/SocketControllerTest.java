@@ -18,7 +18,7 @@ class SocketControllerTest {
 	static ExecutorService service=null;
 	Future<?> f=null;
 	final String host="localhost";
-	final int port=10008;
+	final int port=10009;
 
 
 	@BeforeAll
@@ -34,19 +34,12 @@ class SocketControllerTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		Thread t=new Thread(new Runnable() {
-
-			@Override
-			public void run() {
+		Thread t=new Thread(()-> {
 				try {
 					new SocketController().init(host, port);
 				} catch (IOException e) {
-					
 					e.printStackTrace();
 				}
-				
-			}
-			
 		});
 		f=service.submit(t);
 
