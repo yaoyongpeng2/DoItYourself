@@ -23,15 +23,15 @@ function list:
 to do list:
 ===
 
-1. have redis-client to connect to.
+1. can be coonected by redis-client
 
-2. work as a redis slave,such as: ping and sync between master and slave
+2. can be a redis slave,such as: ping and sync between master and slave
 
-3. persistence data to file and modification commands to aof 
+3. save data to file and modification commands to aof 
 
 4. more redis commands
 
-5. transaction start rollback commit
+5. transaction mylti exec discard
 
 6. RESTul version of commands
 
