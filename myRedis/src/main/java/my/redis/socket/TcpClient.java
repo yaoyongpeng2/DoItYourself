@@ -16,11 +16,11 @@ public class TcpClient {
 		String returnMsg=null;
 		try {
 			socket = new Socket(host, port);
-			logger.info("client>{}",msg);
 			OutputStream os=socket.getOutputStream();
 			os.write(msg.getBytes("utf-8"));
 			os.write('\n');//!important,because server side calls readline(),which blocks untill a new line read
 			os.flush();//write right now
+			logger.info("client>{}",msg);
 //			BufferedReader br=new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //			String readMsg=br.readLine();//bug here.return message may be multi lines
 			byte[] b=new byte[1024];

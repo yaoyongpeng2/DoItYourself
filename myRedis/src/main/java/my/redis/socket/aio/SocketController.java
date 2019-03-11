@@ -39,13 +39,13 @@ public class SocketController {
         // output provider  
         logger.info("Channel Provider : {}", channel.provider()); 
         
-        //wait for connection，and register CompletionHandlerto handle data after kernel finishes operation. 
+         //wait for connection,and register CompletionHandlerto handle data after kernel finishes operation. 
         channel.accept(null, new CompletionHandler<AsynchronousSocketChannel, Object>() { 
         	//use channel.read() to read one after another.
             final ByteBuffer buffer = ByteBuffer.allocate(1024);  
   
             public void completed(AsynchronousSocketChannel result, Object attachment) {  
-            	String channelInfo=null;
+           	String channelInfo=null;
         		try {
         			channelInfo = result.getRemoteAddress().toString();
         		} catch (IOException e1) {
