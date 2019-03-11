@@ -34,16 +34,16 @@ public class NettyServer {
             	 //The ChannelInitializer is a special handler that is purposed to help a user configure a new Channel. 
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
-                     ch.pipeline().addLast(new EchoServerHandler());
+                     ch.pipeline().addLast(new EchoHandler())
+                     .addLast(new TimeServerHandler());
                  }
              })
              .option(ChannelOption.SO_BACKLOG, 128)          // (5)
-             //用来初始化服务端可连接队列，多个客户端来的时候，
-             //服务端将不能处理的客户端连接请求放在队列中等待处理，backlog参数指定了队列的大小
-             //如果未设置或所设置的值小于1，Java将使用默认值50
-             .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
-            //是否启用心跳保活机制。在双方TCP套接字建立连接后（即都进入ESTABLISHED状态）
-            //并且在两个小时左右上层没有任何数据传输的情况下，这套机制才会被激活
+             //when many client connection incoming,put others into queue whose length is set by SO_BACKLOG,
+             //default to 50,if not set oset toa value<=0
+              .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+            //TCP heart-beat. if nodata dent within 2 hours.
+            //server sends keepalive to client,and client replies ACK
             //Did you notice option() and childOption()?
             //option() is for the NioServerSocketChannel that accepts incoming connections. 
             //childOption() is for the Channels accepted by the parent ServerChannel, which is NioServerSocketChannel in this case.

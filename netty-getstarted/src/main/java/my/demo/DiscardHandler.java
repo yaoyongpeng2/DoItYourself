@@ -7,7 +7,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * Handles a server-side channel.
  */
-public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class DiscardHandler extends ChannelInboundHandlerAdapter { // (1)
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
