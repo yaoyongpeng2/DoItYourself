@@ -20,10 +20,11 @@ function list:
 
 2. framework using `asynchronous` `non-blocking` `socket channel` to recieve commands and return result.
 
+3.can be connected by redis-client
 to do list:
 ===
 
-1. can be connected by redis-client
+1. concert output to the fomat as redis potocol
 
 2. can be a redis slave,such as: ping and sync between master and slave
 
@@ -31,13 +32,13 @@ to do list:
 
 4. more redis commands
 
-5. transaction mylti exec discard
+5. transaction multi/exec/discard
 
-6. RESTul version of commands
+6. RESTful version of commands
 
 7. LRU eviction policy
 
-8.high concurrency request queue
+8. high concurrency request queue
 
 **[Netty IO framework](https://www.cnblogs.com/Jeremy2001/p/6066173.html)**&nbsp;|&nbsp;
 **[Netty in action](https://www.w3cschool.cn/essential_netty_in_action/)**
