@@ -25,7 +25,7 @@ function list:
 to do list:
 ===
 
-1. concert output to the fomat as redis potocol
+1. convert command output to the fomat as redis potocol
 
 2. can be a redis slave,such as: ping and sync between master and slave
 
