@@ -25,7 +25,7 @@ public class GreetingController{
     "content": "Hello, World!"
     }
      */
-    @GetMapping("/greeting")//访问网址http://localhost:8080/greating?name=无上天帝,注意greet后直接?不是/
+    @GetMapping("/greeting")//访问网址http://localhost:8080/greating?name=秦皇汉武,注意greet后直接?不是/ 
     public Greeting getMethodName(@RequestParam(value="name",defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template,name));
     }

@@ -19,4 +19,6 @@ package com.example.restService;
  * ​自动实现的 equals()、hashCode()、toString()
  * 所以你的 id 和 content 数据实际上存储在编译器自动生成的私有 final 字段中，你不需要手动声明它们
  */
-public record Greeting(long id, String content){}
+public record Greeting(long id, String content){
+    
+}
